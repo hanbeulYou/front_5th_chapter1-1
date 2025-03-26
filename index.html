@@ -7,19 +7,22 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       (function (l) {
-        if (l.search[1] === "/") {
-          const decoded = l.search
-            .slice(1)
-            .split("&")
-            .map((s) => s.replace(/~and~/g, "&"))
-            .join("?");
-          const newPath = l.pathname.slice(0, -1) + decoded + l.hash;
-          window.history.replaceState(null, null, newPath);
+        if (l.search) {
+          const params = new URLSearchParams(l.search);
+          const p = params.get("p");
+          const q = params.get("q");
+
+          if (p) {
+            const newUrl =
+              l.pathname.replace(/\/$/, "") + p + (q ? "?" + q : "") + l.hash;
+
+            window.history.replaceState(null, null, newUrl);
+          }
         }
       })(window.location);
     </script>
-    <script type="module" crossorigin src="/front_5th_chapter1-1/assets/main-DluOxwQ8.js"></script>
-    <link rel="modulepreload" crossorigin href="/front_5th_chapter1-1/assets/index-KeoVflX-.js">
+    <script type="module" crossorigin src="/front_5th_chapter1-1/assets/main-Cwl3pMk0.js"></script>
+    <link rel="modulepreload" crossorigin href="/front_5th_chapter1-1/assets/index-CB222hf6.js">
   </head>
   <body>
     <div id="root"></div>
