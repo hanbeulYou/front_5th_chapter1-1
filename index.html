@@ -6,22 +6,16 @@
     <title>항해플러스 SNS</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-      (function (l) {
-        if (l.search[1] === "/") {
-          var decoded = l.search
-            .slice(1)
-            .split("&")
-            .map(function (s) {
-              return s.replace(/~and~/g, "&");
-            })
-            .join("?");
-          window.history.replaceState(
-            null,
-            null,
-            l.pathname.slice(0, -1) + decoded + l.hash,
-          );
-        }
-      })(window.location);
+      const base = "/front_5th_chapter1-1";
+      const current = window.location.pathname;
+
+      console.log(current);
+
+      // if (current.startsWith(`${base}/index.html`)) {
+      //   const rest = current.replace(`${base}/index.html`, "");
+      //   const redirectTo = `${base}${rest}${window.location.search}${window.location.hash}`;
+      //   window.history.replaceState(null, "", redirectTo);
+      // }
     </script>
     <script type="module" crossorigin src="/front_5th_chapter1-1/assets/main-CR7sfUkA.js"></script>
     <link rel="modulepreload" crossorigin href="/front_5th_chapter1-1/assets/index-B0U0dkh5.js">
