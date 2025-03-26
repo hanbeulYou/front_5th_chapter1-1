@@ -1,4 +1,4 @@
-var p=Object.defineProperty;var x=(e,t,s)=>t in e?p(e,t,{enumerable:!0,configurable:!0,writable:!0,value:s}):e[t]=s;var m=(e,t,s)=>x(e,typeof t!="symbol"?t+"":t,s);(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const r of document.querySelectorAll('link[rel="modulepreload"]'))n(r);new MutationObserver(r=>{for(const o of r)if(o.type==="childList")for(const a of o.addedNodes)a.tagName==="LINK"&&a.rel==="modulepreload"&&n(a)}).observe(document,{childList:!0,subtree:!0});function s(r){const o={};return r.integrity&&(o.integrity=r.integrity),r.referrerPolicy&&(o.referrerPolicy=r.referrerPolicy),r.crossOrigin==="use-credentials"?o.credentials="include":r.crossOrigin==="anonymous"?o.credentials="omit":o.credentials="same-origin",o}function n(r){if(r.ep)return;r.ep=!0;const o=s(r);fetch(r.href,o)}})();const v=()=>`
+var b=Object.defineProperty;var x=(e,t,s)=>t in e?b(e,t,{enumerable:!0,configurable:!0,writable:!0,value:s}):e[t]=s;var m=(e,t,s)=>x(e,typeof t!="symbol"?t+"":t,s);(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const r of document.querySelectorAll('link[rel="modulepreload"]'))n(r);new MutationObserver(r=>{for(const o of r)if(o.type==="childList")for(const a of o.addedNodes)a.tagName==="LINK"&&a.rel==="modulepreload"&&n(a)}).observe(document,{childList:!0,subtree:!0});function s(r){const o={};return r.integrity&&(o.integrity=r.integrity),r.referrerPolicy&&(o.referrerPolicy=r.referrerPolicy),r.crossOrigin==="use-credentials"?o.credentials="include":r.crossOrigin==="anonymous"?o.credentials="omit":o.credentials="same-origin",o}function n(r){if(r.ep)return;r.ep=!0;const o=s(r);fetch(r.href,o)}})();const v=()=>`
     <main class="bg-gray-100 flex items-center justify-center min-h-screen">
       <div class="bg-white p-8 rounded-lg shadow-md w-full text-center" style="max-width: 480px">
         <h1 class="text-2xl font-bold text-blue-600 mb-4">항해플러스</h1>
@@ -7,12 +7,12 @@ var p=Object.defineProperty;var x=(e,t,s)=>t in e?p(e,t,{enumerable:!0,configura
         <p class="text-gray-600 mb-8">
           요청하신 페이지가 존재하지 않거나 이동되었을 수 있습니다.
         </p>
-        <a href="${b().getLinkHref("/")}" class="bg-blue-600 text-white px-4 py-2 rounded font-bold">
+        <a href="${p().getLinkHref("/")}" class="bg-blue-600 text-white px-4 py-2 rounded font-bold">
           홈으로 돌아가기
         </a>
       </div>
     </main>
-  `,u=()=>{const e=localStorage.getItem("user");return e?JSON.parse(e):null},y=e=>{localStorage.setItem("user",JSON.stringify(e))},w=()=>{localStorage.removeItem("user")},c=()=>u()!==null,$=e=>{const t=u();localStorage.setItem("user",JSON.stringify({...t,...e}))},i=class i{static getInstance(t,s){return i.instance||(i.instance=new i(t,s)),i.instance}constructor(t,s={mode:"history"}){if(i.instance)return i.instance;this.routes=t,this.mode=s.mode,this.currentPath=this.mode==="hash"?window.location.hash.slice(1)||"/":window.location.pathname,this.mode==="hash"?window.addEventListener("hashchange",()=>{this.currentPath=window.location.hash.slice(1)||"/",this.render()}):window.addEventListener("popstate",()=>{this.currentPath=window.location.pathname,this.render()}),i.instance=this,document.addEventListener("click",n=>{n.target.matches("[data-link]")&&(n.preventDefault(),this.navigate(n.target.getAttribute("href")))}),document.addEventListener("submit",n=>{if(n.target.id==="login-form"){n.preventDefault();const r=document.getElementById("username").value;y({username:r,email:"",bio:""}),this.navigate("/profile")}if(n.target.id==="profile-form"){n.preventDefault();const r=document.getElementById("username").value,o=document.getElementById("email").value,a=document.getElementById("bio").value;$({username:r,email:o,bio:a})}}),document.addEventListener("click",n=>{n.target.matches('[data-action="logout"]')&&(n.preventDefault(),w(),this.navigate("/login"))})}getLinkHref(t){return this.mode==="hash"?`#${t}`:t}navigate(t){this.mode==="hash"?window.location.hash=t:window.history.pushState({},"",t),this.currentPath=t,this.render()}render(){const t=this.routes[this.currentPath]?this.routes[this.currentPath]():v();if(t&&typeof t=="object"&&t.redirect){this.navigate(t.redirect);return}const s=document.getElementById("root");s&&(s.innerHTML=t)}};m(i,"instance",null);let d=i;const f=()=>{const e=b(),t=e.currentPath,s=()=>c()?`
+  `,u=()=>{const e=localStorage.getItem("user");return e?JSON.parse(e):null},y=e=>{localStorage.setItem("user",JSON.stringify(e))},w=()=>{localStorage.removeItem("user")},c=()=>u()!==null,$=e=>{const t=u();localStorage.setItem("user",JSON.stringify({...t,...e}))},i=class i{static getInstance(t,s){return i.instance||(i.instance=new i(t,s)),i.instance}constructor(t,s={mode:"history"}){if(i.instance)return i.instance;this.routes=t,this.mode=s.mode,this.currentPath=this.mode==="hash"?window.location.hash.slice(1)||"/":window.location.pathname.replace("/front_5th-chapter1-1","")||"/",this.mode==="hash"?window.addEventListener("hashchange",()=>{this.currentPath=window.location.hash.slice(1)||"/",this.render()}):window.addEventListener("popstate",()=>{this.currentPath=window.location.pathname,this.render()}),i.instance=this,document.addEventListener("click",n=>{n.target.matches("[data-link]")&&(n.preventDefault(),this.navigate(n.target.getAttribute("href")))}),document.addEventListener("submit",n=>{if(n.target.id==="login-form"){n.preventDefault();const r=document.getElementById("username").value;y({username:r,email:"",bio:""}),this.navigate("/profile")}if(n.target.id==="profile-form"){n.preventDefault();const r=document.getElementById("username").value,o=document.getElementById("email").value,a=document.getElementById("bio").value;$({username:r,email:o,bio:a})}}),document.addEventListener("click",n=>{n.target.matches('[data-action="logout"]')&&(n.preventDefault(),w(),this.navigate("/login"))})}getLinkHref(t){return this.mode==="hash"?`#${t}`:t}navigate(t){this.mode==="hash"?window.location.hash=t:window.history.pushState({},"",t),this.currentPath=t,this.render()}render(){const t=this.routes[this.currentPath]?this.routes[this.currentPath]():v();if(t&&typeof t=="object"&&t.redirect){this.navigate(t.redirect);return}const s=document.getElementById("root");s&&(s.innerHTML=t)}};m(i,"instance",null);let d=i;const h=()=>{const e=p(),t=e.currentPath,s=()=>c()?`
         <li><a href="${e.getLinkHref("/profile")}" class=${t==="/profile"?"text-blue-600":"text-gray-600"}>프로필</a></li>
         <li><a id="logout" href="#" class="text-gray-600" data-action="logout">로그아웃</a></li>
       `:`<li><a href="${e.getLinkHref("/login")}" class=${t==="/login"?"text-blue-600":"text-gray-600"}>로그인</a></li>`;return`
@@ -26,7 +26,7 @@ var p=Object.defineProperty;var x=(e,t,s)=>t in e?p(e,t,{enumerable:!0,configura
         ${s()}
       </ul>
     </nav>
-  `},h=()=>`
+  `},f=()=>`
   <footer class="bg-gray-200 p-4 text-center">
     <p>&copy; 2024 항해플러스. All rights reserved.</p>
   </footer>
@@ -49,7 +49,7 @@ var p=Object.defineProperty;var x=(e,t,s)=>t in e?p(e,t,{enumerable:!0,configura
 `,P={posts:[{id:1,imgSrc:"https://placehold.co/40",name:"홍길동",content:"오늘 날씨가 정말 좋네요. 다들 좋은 하루 보내세요!",createdAt:"5분 전"},{id:2,imgSrc:"https://placehold.co/40",name:"김철수",content:"새로운 프로젝트를 시작했어요. 열심히 코딩 중입니다!",createdAt:"15분 전"},{id:3,imgSrc:"https://placehold.co/40",name:"이영희",content:"오늘 점심 메뉴 추천 받습니다. 뭐가 좋을까요?",createdAt:"30분 전"},{id:4,imgSrc:"https://placehold.co/40",name:"박민수",content:"주말에 등산 가실 분 계신가요? 함께 가요!",createdAt:"1시간 전"},{id:5,imgSrc:"https://placehold.co/40",name:"정수연",content:"새로 나온 영화 재미있대요. 같이 보러 갈 사람?",createdAt:"2시간 전"}]},E=()=>`
   <div class="bg-gray-100 min-h-screen flex justify-center">
     <div class="max-w-md w-full">
-      ${f()}
+      ${h()}
 
       <main class="p-4">
         <div class="mb-4 bg-white rounded-lg shadow p-4">
@@ -63,7 +63,7 @@ var p=Object.defineProperty;var x=(e,t,s)=>t in e?p(e,t,{enumerable:!0,configura
         </div>
       </main>
 
-      ${h()}
+      ${f()}
     </div>
   </div>
 `,g=({text:e})=>`
@@ -118,7 +118,7 @@ var p=Object.defineProperty;var x=(e,t,s)=>t in e?p(e,t,{enumerable:!0,configura
   `},I=()=>`
     <div class="bg-gray-100 min-h-screen flex justify-center">
       <div class="max-w-md w-full">
-        ${f()}
+        ${h()}
 
         <main class="p-4">
           <div class="bg-white p-8 rounded-lg shadow-md">
@@ -129,7 +129,7 @@ var p=Object.defineProperty;var x=(e,t,s)=>t in e?p(e,t,{enumerable:!0,configura
           </div>
         </main>
 
-        ${h()}
+        ${f()}
       </div>
     </div>
   `,A=()=>`
@@ -156,4 +156,4 @@ var p=Object.defineProperty;var x=(e,t,s)=>t in e?p(e,t,{enumerable:!0,configura
       </div>
     </div>
   </main>
-`,O={"/":E,"/profile":()=>c()?I():{redirect:"/login"},"/login":()=>c()?{redirect:"/"}:k()};let l=null;const H=(e={mode:"history"})=>(l=d.getInstance(O,e),l),b=()=>{if(!l)throw new Error("Router has not been initialized");return l};export{H as i};
+`,O={"/":E,"/profile":()=>c()?I():{redirect:"/login"},"/login":()=>c()?{redirect:"/"}:k()};let l=null;const H=(e={mode:"history"})=>(l=d.getInstance(O,e),l),p=()=>{if(!l)throw new Error("Router has not been initialized");return l};export{H as i};
