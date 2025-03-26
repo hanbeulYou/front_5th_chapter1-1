@@ -4,28 +4,11 @@
     <meta charset="UTF-8" />
     <title>404 - 페이지를 찾을 수 없습니다</title>
     <script>
-      var pathSegmentsToKeep = 1;
-
-      var l = window.location;
-      l.replace(
-        l.protocol +
-          "//" +
-          l.hostname +
-          (l.port ? ":" + l.port : "") +
-          l.pathname
-            .split("/")
-            .slice(0, 1 + pathSegmentsToKeep)
-            .join("/") +
-          "/?/" +
-          l.pathname
-            .slice(1)
-            .split("/")
-            .slice(pathSegmentsToKeep)
-            .join("/")
-            .replace(/&/g, "~and~") +
-          (l.search ? "&" + l.search.slice(1).replace(/&/g, "~and~") : "") +
-          l.hash,
-      );
+      const base = "/front_5th_chapter1-1";
+      const pathname = window.location.pathname.replace(base, "");
+      const redirectTo = `${base}/index.html${pathname}${window.location.search}${window.location.hash}`;
+      console.log(redirectTo);
+      // window.location.replace(redirectTo);
     </script>
   </head>
   <body>
