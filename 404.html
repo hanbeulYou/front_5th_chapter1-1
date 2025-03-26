@@ -5,14 +5,15 @@
     <title>404 - 페이지를 찾을 수 없습니다</title>
     <script>
       const base = "/front_5th_chapter1-1";
-      const pathname = window.location.pathname.replace(base, "");
-      const redirectTo = `${base}/index.html${pathname}${window.location.search}${window.location.hash}`;
+      const path = window.location.pathname;
 
-      console.log(redirectTo);
-      console.log(window.location.pathname);
-      console.log(window.location.search);
-      console.log(window.location.hash);
-      // window.location.replace(redirectTo);
+      console.log(path);
+
+      if (!path.includes("index.html")) {
+        const pathname = path.replace(base, "");
+        const redirectTo = `${base}/index.html${pathname}${window.location.search}${window.location.hash}`;
+        window.location.replace(redirectTo);
+      }
     </script>
   </head>
   <body>
