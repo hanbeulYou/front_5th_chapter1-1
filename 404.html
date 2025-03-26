@@ -7,7 +7,12 @@
       const base = "/front_5th_chapter1-1";
       const pathname = window.location.pathname.replace(base, "");
       const redirectTo = `${base}/index.html${pathname}${window.location.search}${window.location.hash}`;
-      window.location.replace(redirectTo);
+
+      console.log(redirectTo);
+      console.log(window.location.pathname);
+      console.log(window.location.search);
+      console.log(window.location.hash);
+      // window.location.replace(redirectTo);
     </script>
   </head>
   <body>
