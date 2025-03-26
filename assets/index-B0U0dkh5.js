@@ -156,4 +156,4 @@ var p=Object.defineProperty;var x=(e,t,r)=>t in e?p(e,t,{enumerable:!0,configura
       </div>
     </div>
   </main>
-`,O={"/":E,"/profile":()=>c()?I():{redirect:"/login"},"/login":()=>c()?{redirect:"/"}:k()},j="/front_5th_chapter1-1";let l=null;const B=(e={mode:"history"})=>(l=d.getInstance(O,{...e,base:j}),l),b=()=>{if(!l)throw new Error("Router has not been initialized");return l};export{B as i};
+`,O={"/":E,"/profile":()=>c()?I():{redirect:"/login"},"/login":()=>c()?{redirect:"/"}:k()},j="/front_5th_chapter1-1/";let l=null;const B=(e={mode:"history"})=>(l=d.getInstance(O,{...e,base:j}),l),b=()=>{if(!l)throw new Error("Router has not been initialized");return l};export{B as i};
