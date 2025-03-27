@@ -1,4 +1,4 @@
-var x=Object.defineProperty;var v=(t,e,s)=>e in t?x(t,e,{enumerable:!0,configurable:!0,writable:!0,value:s}):t[e]=s;var h=(t,e,s)=>v(t,typeof e!="symbol"?e+"":e,s);(function(){const e=document.createElement("link").relList;if(e&&e.supports&&e.supports("modulepreload"))return;for(const r of document.querySelectorAll('link[rel="modulepreload"]'))i(r);new MutationObserver(r=>{for(const n of r)if(n.type==="childList")for(const l of n.addedNodes)l.tagName==="LINK"&&l.rel==="modulepreload"&&i(l)}).observe(document,{childList:!0,subtree:!0});function s(r){const n={};return r.integrity&&(n.integrity=r.integrity),r.referrerPolicy&&(n.referrerPolicy=r.referrerPolicy),r.crossOrigin==="use-credentials"?n.credentials="include":r.crossOrigin==="anonymous"?n.credentials="omit":n.credentials="same-origin",n}function i(r){if(r.ep)return;r.ep=!0;const n=s(r);fetch(r.href,n)}})();const w=()=>`
+var x=Object.defineProperty;var v=(t,e,s)=>e in t?x(t,e,{enumerable:!0,configurable:!0,writable:!0,value:s}):t[e]=s;var h=(t,e,s)=>v(t,typeof e!="symbol"?e+"":e,s);(function(){const e=document.createElement("link").relList;if(e&&e.supports&&e.supports("modulepreload"))return;for(const r of document.querySelectorAll('link[rel="modulepreload"]'))o(r);new MutationObserver(r=>{for(const n of r)if(n.type==="childList")for(const l of n.addedNodes)l.tagName==="LINK"&&l.rel==="modulepreload"&&o(l)}).observe(document,{childList:!0,subtree:!0});function s(r){const n={};return r.integrity&&(n.integrity=r.integrity),r.referrerPolicy&&(n.referrerPolicy=r.referrerPolicy),r.crossOrigin==="use-credentials"?n.credentials="include":r.crossOrigin==="anonymous"?n.credentials="omit":n.credentials="same-origin",n}function o(r){if(r.ep)return;r.ep=!0;const n=s(r);fetch(r.href,n)}})();const y=()=>`
     <main class="bg-gray-100 flex items-center justify-center min-h-screen">
       <div class="bg-white p-8 rounded-lg shadow-md w-full text-center" style="max-width: 480px">
         <h1 class="text-2xl font-bold text-blue-600 mb-4">항해플러스</h1>
@@ -12,25 +12,25 @@ var x=Object.defineProperty;var v=(t,e,s)=>e in t?x(t,e,{enumerable:!0,configura
         </a>
       </div>
     </main>
-  `,m=()=>{const t=localStorage.getItem("user");return t?JSON.parse(t):null},y=t=>{localStorage.setItem("user",JSON.stringify(t))},P=()=>{localStorage.removeItem("user")},d=()=>m()!==null,$=t=>{const e=m();localStorage.setItem("user",JSON.stringify({...e,...t}))},a=class a{static getInstance(e,s){return a.instance||(a.instance=new a(e,s)),a.instance}constructor(e,s={mode:"history",base:"/"}){if(a.instance)return a.instance;this.routes=e,this.mode=s.mode,this.base=s.base,this.currentPath=this.getCurrentPath();const i=()=>{this.render()};this.mode==="hash"?window.addEventListener("hashchange",i):window.addEventListener("popstate",i),a.instance=this,document.addEventListener("click",r=>{r.target.matches("[data-link]")&&(r.preventDefault(),this.navigate(r.target.getAttribute("href")))}),document.addEventListener("submit",r=>{if(r.target.id==="login-form"){r.preventDefault();const n=document.getElementById("username").value;y({username:n,email:"",bio:""}),this.navigate("/profile")}if(r.target.id==="profile-form"){r.preventDefault();const n=document.getElementById("username").value,l=document.getElementById("email").value,p=document.getElementById("bio").value;$({username:n,email:l,bio:p})}}),document.addEventListener("click",r=>{r.target.matches('[data-action="logout"]')&&(r.preventDefault(),P(),this.navigate("/login"))})}getCurrentPath(){if(this.mode==="hash")return console.log("hash",window.location.hash),window.location.hash.slice(1)||"/";const s=new URLSearchParams(window.location.search).get("p");return s!=null&&s.startsWith("/")?(console.log("redirectPath",s),s):(console.log("pathname",window.location.pathname),window.location.pathname)}getLinkHref(e){const s=this.base+e.replace(/^\//,"");return this.mode==="hash"?`#${e}`:s}navigate(e){const s=this.base+e.replace(/^\//,"");this.mode==="hash"?window.location.hash=e:window.history.pushState({},"",s),this.currentPath=this.getCurrentPath(),this.render()}render(){const e=this.routes[this.currentPath]?this.routes[this.currentPath]():w();if(e&&typeof e=="object"&&e.redirect){this.navigate(e.redirect);return}const s=document.getElementById("root");s&&(s.innerHTML=e)}};h(a,"instance",null);let u=a;const o="/front_5th_chapter1-1/",f=()=>{const e=N().currentPath;return`
+  `,m=()=>{const t=localStorage.getItem("user");return t?JSON.parse(t):null},w=t=>{localStorage.setItem("user",JSON.stringify(t))},P=()=>{localStorage.removeItem("user")},d=()=>m()!==null,$=t=>{const e=m();localStorage.setItem("user",JSON.stringify({...e,...t}))},a=class a{static getInstance(e,s){return a.instance||(a.instance=new a(e,s)),a.instance}constructor(e,s={mode:"history",base:"/"}){if(a.instance)return a.instance;this.routes=e,this.mode=s.mode,this.base=s.base,this.currentPath=this.getCurrentPath();const o=()=>{this.currentPath=this.getCurrentPath(),this.render()};this.mode==="hash"?window.addEventListener("hashchange",o):window.addEventListener("popstate",o),a.instance=this,document.addEventListener("click",r=>{r.target.matches("[data-link]")&&(r.preventDefault(),this.navigate(r.target.getAttribute("href")))}),document.addEventListener("submit",r=>{if(r.target.id==="login-form"){r.preventDefault();const n=document.getElementById("username").value;w({username:n,email:"",bio:""}),this.navigate("/profile")}if(r.target.id==="profile-form"){r.preventDefault();const n=document.getElementById("username").value,l=document.getElementById("email").value,p=document.getElementById("bio").value;$({username:n,email:l,bio:p})}}),document.addEventListener("click",r=>{r.target.matches('[data-action="logout"]')&&(r.preventDefault(),P(),this.navigate("/login"))})}getCurrentPath(){if(this.mode==="hash")return window.location.hash.slice(1)||"/";const s=new URLSearchParams(window.location.search).get("p");if(s!=null&&s.startsWith("/"))return s;const o=window.location.pathname;return o.startsWith(this.base)?o.slice(this.base.length)||"/":o}navigate(e){const s=this.base+e.replace(/^\//,"");this.mode==="hash"?window.location.hash=e:window.history.pushState({},"",s),this.currentPath=e,this.render()}render(){const e=this.routes[this.currentPath]?this.routes[this.currentPath]():y();if(e&&typeof e=="object"&&e.redirect){this.navigate(e.redirect);return}const s=document.getElementById("root");s&&(s.innerHTML=e)}};h(a,"instance",null);let u=a;const i="/front_5th_chapter1-1/",f=()=>{const e=N().currentPath;return`
     <header class="bg-blue-600 text-white p-4 sticky top-0">
       <h1 class="text-2xl font-bold">항해플러스</h1>
     </header>
 
     <nav class="bg-white shadow-md p-2 sticky top-14">
       <ul class="flex justify-around">
-        <li><a data-link href="/" class="${e===o?"text-blue-600 font-bold":"text-gray-600"}">홈</a></li>
+        <li><a data-link href="/" class="${e===i?"text-blue-600 font-bold":"text-gray-600"}">홈</a></li>
         ${d()?`
-        <li><a data-link href="/profile" class="${e===o+"profile"?"text-blue-600":"text-gray-600"}">프로필</a></li>
+        <li><a data-link href="/profile" class="${e===i+"profile"?"text-blue-600":"text-gray-600"}">프로필</a></li>
         <li><a id="logout" href="#" class="text-gray-600" data-action="logout">로그아웃</a></li>
-      `:`<li><a data-link href="/login" class="${e===o+"login"?"text-blue-600":"text-gray-600"}">로그인</a></li>`}
+      `:`<li><a data-link href="/login" class="${e===i+"login"?"text-blue-600":"text-gray-600"}">로그인</a></li>`}
       </ul>
     </nav>
   `},g=()=>`
   <footer class="bg-gray-200 p-4 text-center">
     <p>&copy; 2024 항해플러스. All rights reserved.</p>
   </footer>
-`,L=({post:t})=>`
+`,S=({post:t})=>`
   <div class="bg-white rounded-lg shadow p-4 id=${t.id}">
     <div class="flex items-center mb-2">
       <img src="${t.imgSrc}" alt="프로필" class="rounded-full mr-2">
@@ -46,7 +46,7 @@ var x=Object.defineProperty;var v=(t,e,s)=>e in t?x(t,e,{enumerable:!0,configura
       <button>공유</button>
     </div>
   </div>
-`,S={posts:[{id:1,imgSrc:"https://placehold.co/40",name:"홍길동",content:"오늘 날씨가 정말 좋네요. 다들 좋은 하루 보내세요!",createdAt:"5분 전"},{id:2,imgSrc:"https://placehold.co/40",name:"김철수",content:"새로운 프로젝트를 시작했어요. 열심히 코딩 중입니다!",createdAt:"15분 전"},{id:3,imgSrc:"https://placehold.co/40",name:"이영희",content:"오늘 점심 메뉴 추천 받습니다. 뭐가 좋을까요?",createdAt:"30분 전"},{id:4,imgSrc:"https://placehold.co/40",name:"박민수",content:"주말에 등산 가실 분 계신가요? 함께 가요!",createdAt:"1시간 전"},{id:5,imgSrc:"https://placehold.co/40",name:"정수연",content:"새로 나온 영화 재미있대요. 같이 보러 갈 사람?",createdAt:"2시간 전"}]},E=()=>`
+`,E={posts:[{id:1,imgSrc:"https://placehold.co/40",name:"홍길동",content:"오늘 날씨가 정말 좋네요. 다들 좋은 하루 보내세요!",createdAt:"5분 전"},{id:2,imgSrc:"https://placehold.co/40",name:"김철수",content:"새로운 프로젝트를 시작했어요. 열심히 코딩 중입니다!",createdAt:"15분 전"},{id:3,imgSrc:"https://placehold.co/40",name:"이영희",content:"오늘 점심 메뉴 추천 받습니다. 뭐가 좋을까요?",createdAt:"30분 전"},{id:4,imgSrc:"https://placehold.co/40",name:"박민수",content:"주말에 등산 가실 분 계신가요? 함께 가요!",createdAt:"1시간 전"},{id:5,imgSrc:"https://placehold.co/40",name:"정수연",content:"새로 나온 영화 재미있대요. 같이 보러 갈 사람?",createdAt:"2시간 전"}]},L=()=>`
   <div class="bg-gray-100 min-h-screen flex justify-center">
     <div class="max-w-md w-full">
       ${f()}
@@ -58,7 +58,7 @@ var x=Object.defineProperty;var v=(t,e,s)=>e in t?x(t,e,{enumerable:!0,configura
         </div>
 
         <div class="space-y-4">
-          ${S.posts.map(t=>L({post:t})).join("")}
+          ${E.posts.map(t=>S({post:t})).join("")}
 
         </div>
       </main>
@@ -156,4 +156,4 @@ var x=Object.defineProperty;var v=(t,e,s)=>e in t?x(t,e,{enumerable:!0,configura
       </div>
     </div>
   </main>
-`,j={[o]:E,[o+"profile"]:()=>d()?A():{redirect:o+"login"},[o+"login"]:()=>d()?{redirect:o}:O()};let c=null;const D=(t={mode:"history"})=>(c=u.getInstance(j,{...t,base:o}),c),N=()=>{if(!c)throw new Error("Router has not been initialized");return c};export{D as i};
+`,j={[i]:L,[i+"profile"]:()=>d()?A():{redirect:i+"login"},[i+"login"]:()=>d()?{redirect:i}:O()};let c=null;const D=(t={mode:"history"})=>(c=u.getInstance(j,{...t,base:i}),c),N=()=>{if(!c)throw new Error("Router has not been initialized");return c};export{D as i};
