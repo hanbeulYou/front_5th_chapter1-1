@@ -7,22 +7,22 @@ var v=Object.defineProperty;var w=(e,t,s)=>t in e?v(e,t,{enumerable:!0,configura
         <p class="text-gray-600 mb-8">
           요청하신 페이지가 존재하지 않거나 이동되었을 수 있습니다.
         </p>
-        <a href="${p().getLinkHref("/")}" class="bg-blue-600 text-white px-4 py-2 rounded font-bold">
+        <a data-link href="${p().getLinkHref("/")}" class="bg-blue-600 text-white px-4 py-2 rounded font-bold">
           홈으로 돌아가기
         </a>
       </div>
     </main>
-  `,m=()=>{const e=localStorage.getItem("user");return e?JSON.parse(e):null},$=e=>{localStorage.setItem("user",JSON.stringify(e))},P=()=>{localStorage.removeItem("user")},d=()=>m()!==null,L=e=>{const t=m();localStorage.setItem("user",JSON.stringify({...t,...e}))},o=class o{static getInstance(t,s){return o.instance||(o.instance=new o(t,s)),o.instance}constructor(t,s={mode:"history",base:"/"}){if(o.instance)return o.instance;this.routes=t,this.mode=s.mode,this.base=s.base,this.currentPath=this.getCurrentPath();const i=()=>{this.render()};this.mode==="hash"?window.addEventListener("hashchange",i):window.addEventListener("popstate",i),o.instance=this,document.addEventListener("click",r=>{r.target.matches("[data-link]")&&(r.preventDefault(),this.navigate(r.target.getAttribute("href")))}),document.addEventListener("submit",r=>{if(r.target.id==="login-form"){r.preventDefault();const n=document.getElementById("username").value;$({username:n,email:"",bio:""}),this.navigate("/profile")}if(r.target.id==="profile-form"){r.preventDefault();const n=document.getElementById("username").value,l=document.getElementById("email").value,x=document.getElementById("bio").value;L({username:n,email:l,bio:x})}}),document.addEventListener("click",r=>{r.target.matches('[data-action="logout"]')&&(r.preventDefault(),P(),this.navigate("/login"))})}getCurrentPath(){if(this.mode==="hash")return console.log("hash",window.location.hash),window.location.hash.slice(1)||"/";const s=new URLSearchParams(window.location.search).get("p");return s!=null&&s.startsWith("/")?(console.log("redirectPath",s),s):(console.log("pathname",window.location.pathname),window.location.pathname)}getLinkHref(t){const s=this.base+t.replace(/^\//,"");return this.mode==="hash"?`#${t}`:s}navigate(t){const s=this.base+t.replace(/^\//,"");this.mode==="hash"?window.location.hash=t:window.history.pushState({},"",s),this.currentPath=this.getCurrentPath(),this.render()}render(){const t=this.routes[this.currentPath]?this.routes[this.currentPath]():y();if(t&&typeof t=="object"&&t.redirect){this.navigate(t.redirect);return}const s=document.getElementById("root");s&&(s.innerHTML=t)}};h(o,"instance",null);let u=o;const a="/front_5th_chapter1-1/",f=()=>{const e=p(),t=e.currentPath,s=()=>d()?`
-        <li><a href="${e.getLinkHref("/profile")}" class="${t===a+"profile"?"text-blue-600":"text-gray-600"}">프로필</a></li>
+  `,m=()=>{const e=localStorage.getItem("user");return e?JSON.parse(e):null},$=e=>{localStorage.setItem("user",JSON.stringify(e))},P=()=>{localStorage.removeItem("user")},d=()=>m()!==null,L=e=>{const t=m();localStorage.setItem("user",JSON.stringify({...t,...e}))},a=class a{static getInstance(t,s){return a.instance||(a.instance=new a(t,s)),a.instance}constructor(t,s={mode:"history",base:"/"}){if(a.instance)return a.instance;this.routes=t,this.mode=s.mode,this.base=s.base,this.currentPath=this.getCurrentPath();const i=()=>{this.render()};this.mode==="hash"?window.addEventListener("hashchange",i):window.addEventListener("popstate",i),a.instance=this,document.addEventListener("click",r=>{r.target.matches("[data-link]")&&(r.preventDefault(),this.navigate(r.target.getAttribute("href")))}),document.addEventListener("submit",r=>{if(r.target.id==="login-form"){r.preventDefault();const n=document.getElementById("username").value;$({username:n,email:"",bio:""}),this.navigate("/profile")}if(r.target.id==="profile-form"){r.preventDefault();const n=document.getElementById("username").value,l=document.getElementById("email").value,x=document.getElementById("bio").value;L({username:n,email:l,bio:x})}}),document.addEventListener("click",r=>{r.target.matches('[data-action="logout"]')&&(r.preventDefault(),P(),this.navigate("/login"))})}getCurrentPath(){if(this.mode==="hash")return console.log("hash",window.location.hash),window.location.hash.slice(1)||"/";const s=new URLSearchParams(window.location.search).get("p");return s!=null&&s.startsWith("/")?(console.log("redirectPath",s),s):(console.log("pathname",window.location.pathname),window.location.pathname)}getLinkHref(t){const s=this.base+t.replace(/^\//,"");return this.mode==="hash"?`#${t}`:s}navigate(t){const s=this.base+t.replace(/^\//,"");this.mode==="hash"?window.location.hash=t:window.history.pushState({},"",s),this.currentPath=this.getCurrentPath(),this.render()}render(){const t=this.routes[this.currentPath]?this.routes[this.currentPath]():y();if(t&&typeof t=="object"&&t.redirect){this.navigate(t.redirect);return}const s=document.getElementById("root");s&&(s.innerHTML=t)}};h(a,"instance",null);let u=a;const o="/front_5th_chapter1-1/",f=()=>{const e=p(),t=e.currentPath,s=()=>d()?`
+        <li><a data-link href="${e.getLinkHref("/profile")}" class="${t===o+"profile"?"text-blue-600":"text-gray-600"}">프로필</a></li>
         <li><a id="logout" href="#" class="text-gray-600" data-action="logout">로그아웃</a></li>
-      `:`<li><a href="${e.getLinkHref("/login")}" class="${t===a+"login"?"text-blue-600":"text-gray-600"}">로그인</a></li>`;return`
+      `:`<li><a data-link href="${e.getLinkHref("/login")}" class="${t===o+"login"?"text-blue-600":"text-gray-600"}">로그인</a></li>`;return`
     <header class="bg-blue-600 text-white p-4 sticky top-0">
       <h1 class="text-2xl font-bold">항해플러스</h1>
     </header>
 
     <nav class="bg-white shadow-md p-2 sticky top-14">
       <ul class="flex justify-around">
-        <li><a href="${e.getLinkHref("/")}" class="${t===a?"text-blue-600 font-bold":"text-gray-600"}">홈</a></li>
+        <li><a data-link href="${e.getLinkHref("/")}" class="${t===o?"text-blue-600 font-bold":"text-gray-600"}">홈</a></li>
         ${s()}
       </ul>
     </nav>
@@ -68,7 +68,7 @@ var v=Object.defineProperty;var w=(e,t,s)=>t in e?v(e,t,{enumerable:!0,configura
   </div>
 `,b=({text:e})=>`
   <button type="submit" class="w-full bg-blue-600 text-white p-2 rounded font-bold">${e}</button>
-`,A=()=>{const e=m();return`
+`,k=()=>{const e=m();return`
     <form id="profile-form">
       <div class="mb-4">
         <label
@@ -115,7 +115,7 @@ var v=Object.defineProperty;var w=(e,t,s)=>t in e?v(e,t,{enumerable:!0,configura
       </div>
       ${b({text:"프로필 업데이트"})}
     </form>
-  `},k=()=>`
+  `},A=()=>`
     <div class="bg-gray-100 min-h-screen flex justify-center">
       <div class="max-w-md w-full">
         ${f()}
@@ -125,7 +125,7 @@ var v=Object.defineProperty;var w=(e,t,s)=>t in e?v(e,t,{enumerable:!0,configura
             <h2 class="text-2xl font-bold text-center text-blue-600 mb-8">
               내 프로필
             </h2>
-            ${A()}
+            ${k()}
           </div>
         </main>
 
@@ -156,4 +156,4 @@ var v=Object.defineProperty;var w=(e,t,s)=>t in e?v(e,t,{enumerable:!0,configura
       </div>
     </div>
   </main>
-`,H={[a]:I,[a+"profile"]:()=>d()?k():{redirect:a+"login"},[a+"login"]:()=>d()?{redirect:a}:j()};let c=null;const N=(e={mode:"history"})=>(c=u.getInstance(H,{...e,base:a}),c),p=()=>{if(!c)throw new Error("Router has not been initialized");return c};export{N as i};
+`,H={[o]:I,[o+"profile"]:()=>d()?A():{redirect:o+"login"},[o+"login"]:()=>d()?{redirect:o}:j()};let c=null;const N=(e={mode:"history"})=>(c=u.getInstance(H,{...e,base:o}),c),p=()=>{if(!c)throw new Error("Router has not been initialized");return c};export{N as i};
